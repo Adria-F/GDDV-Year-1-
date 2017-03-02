@@ -27,10 +27,6 @@ int main(int argc, char* argv[])
 	Uint32 red = SDL_MapRGB(screen->format, 255, 0, 0);
 	Uint32 blue = SDL_MapRGB(screen->format, 0, 0, 255);
 
-	SDL_FillRect(screen, NULL, red);
-	SDL_FillRect(screen, &rect, blue);
-	SDL_UpdateWindowSurface(window);
-
 	SDL_Event event;
 	bool running = true;
 
@@ -38,12 +34,18 @@ int main(int argc, char* argv[])
 	{
 		while (SDL_PollEvent(&event))
 		{
-			if (event.type == SDL_QUIT)
+			if (event.type == SDL_KEYDOWN)
 			{
-				running = false;
-				break;
+				if (event.key.keysym.sym == SDLK_ESCAPE)
+				{ 
+					running = false;
+					break;
+				}
 			}
 		}
+		SDL_FillRect(screen, NULL, red);
+		SDL_FillRect(screen, &rect, blue);
+		SDL_UpdateWindowSurface(window);
 	}
 
 	SDL_Quit();
