@@ -2,16 +2,16 @@
 #include "SDL.h"
 #include <time.h>
 #include <math.h>
-
 using namespace std;
 
-#define Player_Speed 0.1
+#define Player_Speed 0.15
 #define Bullet_Speed 0.25 //1 sec to cross screen 0.25
 #define Enemy_Speed 0.2 //2.5 sec to cross screen 0.1
 #define Spawn_Delay 1 //in seconds 1
 #define Max_Enemies 3
 #define Max_Lives 3
 #define Max_Bullets 2
+#define Background_Speed 0.3
 
 
 #pragma comment( lib, "SDL2.lib" )
@@ -270,11 +270,26 @@ bool detect_lose(SDL_Surface* gameover, SDL_Surface* screen, SDL_Rect* dead_scre
 	return result;
 }
 
+void scrolling_background(SDL_Surface* background, SDL_Rect bckg[], SDL_Surface* screen, float* background_pos)
+{
+	for (int i = 0; i < 2; i++)
+	{
+		background_pos[i] -= Background_Speed;
+		bckg[i].x = background_pos[i];
+		if (bckg[i].x < -853)
+		{
+			background_pos[i] = 853;
+			bckg[i].x = 853;
+ 		}
+		SDL_BlitSurface(background, NULL, screen, &bckg[i]);
+	}
+}
+
 int main(int argc, char* argv[])
 {
 	srand(time(NULL));
 	SDL_Init(SDL_INIT_EVERYTHING);
-	SDL_RENDERER_PRESENTVSYNC;
+	//SDL_RENDERER_PRESENTVSYNC;
 
 	char c_point[7];
 	char score[35] = "Space Invaders      Points: ";
@@ -293,11 +308,16 @@ int main(int argc, char* argv[])
 	SDL_Surface* lives = SDL_LoadBMP("heart.bmp");
 	SDL_Surface* gameover = SDL_LoadBMP("gameover.bmp");
 
-	SDL_Rect bckg;
-	bckg.h = 480;
-	bckg.w = 720;
-	bckg.x = 0;
-	bckg.y = 0;
+	SDL_Rect bckg[2];
+	float background_pos[2];
+	for (int i = 0; i < 2; i++)
+	{
+		bckg[i].h = 480;
+		bckg[i].w = 853;
+		bckg[i].x = 853 * i;
+		bckg[i].y = 0;
+		background_pos[i] = bckg[i].x;
+	}
 
 	SDL_Rect character;
 	character.h = 50;
@@ -342,16 +362,16 @@ int main(int argc, char* argv[])
 	}
 
 	SDL_Rect dead_screen;
-	bckg.h = 480;
-	bckg.w = 720;
-	bckg.x = 0;
-	bckg.y = 0;
+	dead_screen.h = 480;
+	dead_screen.w = 720;
+	dead_screen.x = 0;
+	dead_screen.y = 0;
 
 	bool running = true;
 
 	while (running)
 	{
-		SDL_BlitSurface(background, NULL, screen, &bckg);
+		scrolling_background(background, &bckg[0], screen, &background_pos[0]);
 
 		timer(&spawn); //comment to delet enemies
 
