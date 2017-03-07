@@ -1,0 +1,23 @@
+﻿  main.cpp
+c:\users\adriafc\desktop\sdl_spaceinvaders\sdl_spaceinvaders\main.cpp(54): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\adriafc\desktop\sdl_spaceinvaders\sdl_spaceinvaders\main.cpp(99): warning C4305: '-=': truncation from 'double' to 'float'
+c:\users\adriafc\desktop\sdl_spaceinvaders\sdl_spaceinvaders\main.cpp(100): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\adriafc\desktop\sdl_spaceinvaders\sdl_spaceinvaders\main.cpp(104): warning C4305: '+=': truncation from 'double' to 'float'
+c:\users\adriafc\desktop\sdl_spaceinvaders\sdl_spaceinvaders\main.cpp(105): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\adriafc\desktop\sdl_spaceinvaders\sdl_spaceinvaders\main.cpp(109): warning C4305: '-=': truncation from 'double' to 'float'
+c:\users\adriafc\desktop\sdl_spaceinvaders\sdl_spaceinvaders\main.cpp(110): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\adriafc\desktop\sdl_spaceinvaders\sdl_spaceinvaders\main.cpp(114): warning C4305: '+=': truncation from 'double' to 'float'
+c:\users\adriafc\desktop\sdl_spaceinvaders\sdl_spaceinvaders\main.cpp(115): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\adriafc\desktop\sdl_spaceinvaders\sdl_spaceinvaders\main.cpp(126): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\adriafc\desktop\sdl_spaceinvaders\sdl_spaceinvaders\main.cpp(138): warning C4305: '+=': truncation from 'double' to 'float'
+c:\users\adriafc\desktop\sdl_spaceinvaders\sdl_spaceinvaders\main.cpp(160): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\adriafc\desktop\sdl_spaceinvaders\sdl_spaceinvaders\main.cpp(172): warning C4305: '-=': truncation from 'double' to 'float'
+c:\users\adriafc\desktop\sdl_spaceinvaders\sdl_spaceinvaders\main.cpp(173): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\adriafc\desktop\sdl_spaceinvaders\sdl_spaceinvaders\main.cpp(232): warning C4244: '/=': conversion from 'double' to 'int', possible loss of data
+c:\users\adriafc\desktop\sdl_spaceinvaders\sdl_spaceinvaders\main.cpp(246): warning C4244: '/=': conversion from 'double' to 'int', possible loss of data
+c:\users\adriafc\desktop\sdl_spaceinvaders\sdl_spaceinvaders\main.cpp(248): warning C4244: '-=': conversion from 'double' to 'int', possible loss of data
+c:\users\adriafc\desktop\sdl_spaceinvaders\sdl_spaceinvaders\main.cpp(275): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+c:\users\adriafc\desktop\sdl_spaceinvaders\sdl_spaceinvaders\main.cpp(307): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\adriafc\desktop\sdl_spaceinvaders\sdl_spaceinvaders\main.cpp(308): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+  SDL_SpaceInvaders.vcxproj -> C:\Users\adriafc\Desktop\SDL_SpaceInvaders\Debug\SDL_SpaceInvaders.exe
+  SDL_SpaceInvaders.vcxproj -> C:\Users\adriafc\Desktop\SDL_SpaceInvaders\Debug\SDL_SpaceInvaders.pdb (Partial PDB)
