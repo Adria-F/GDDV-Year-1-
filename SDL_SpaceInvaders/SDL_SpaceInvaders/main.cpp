@@ -1,21 +1,23 @@
 #include <iostream>
 #include "SDL.h"
+#include "SDL_image.h"
 #include <time.h>
 #include <math.h>
 using namespace std;
 
-#define Player_Speed 0.15
-#define Bullet_Speed 0.25 //1 sec to cross screen 0.25
-#define Enemy_Speed 0.2 //2.5 sec to cross screen 0.1
-#define Spawn_Delay 1 //in seconds 1
+#define Player_Speed 0.2 //0.15
+#define Bullet_Speed 0.35 //1 sec to cross screen 0.25
+#define Enemy_Speed 0.3 //2.5 sec to cross screen 0.1
+#define Spawn_Delay 0.5 //in seconds 1
 #define Max_Enemies 3
 #define Max_Lives 3
-#define Max_Bullets 2
-#define Background_Speed 0.3
+#define Max_Bullets 5
+#define Background_Speed 0.35 //0.3
 
 
 #pragma comment( lib, "SDL2.lib" )
 #pragma comment ( lib, "SDL2main.lib" )
+#pragma comment (lib, "SDL2_image")
 
 SDL_Event event;
 bool shot[Max_Bullets];
@@ -26,7 +28,7 @@ bool dead = false;
 bool m_up = false, m_down = false, m_left = false, m_right = false, space = false;
 float character_pos_y = 0, character_pos_x = 0;
 
-void inputs(bool* running, SDL_Rect* character, SDL_Rect bullet[], float bullet_pos[])
+void inputs(bool* running, SDL_Rect* character, SDL_Rect bullet[], float bullet_pos[], SDL_Rect* character_sprite)
 {
 	while (SDL_PollEvent(&event))
 	{
@@ -49,8 +51,8 @@ void inputs(bool* running, SDL_Rect* character, SDL_Rect bullet[], float bullet_
 							shot[i] = true;
 							bullet[i].x = character->x;
 							bullet[i].y = character->y + 12;
-							bullet[i].w = 50;
-							bullet[i].h = 25;
+							bullet[i].w = 11 ;
+							bullet[i].h = 5;
 							bullet_pos[i] = bullet[i].x;
 							break;
 						}
@@ -67,6 +69,7 @@ void inputs(bool* running, SDL_Rect* character, SDL_Rect bullet[], float bullet_
 					break;
 				case SDLK_RIGHT:
 					m_right = true;
+					character_sprite->x = 260;
 					break;
 				}
 			}
@@ -86,6 +89,7 @@ void inputs(bool* running, SDL_Rect* character, SDL_Rect bullet[], float bullet_
 				break;
 			case SDLK_RIGHT:
 				m_right = false;
+				character_sprite->x = 308;
 				break;
 			}
 		}
@@ -116,7 +120,7 @@ void move_character(SDL_Rect* character)
 	}
 }
 
-void draw_bullet(SDL_Rect bullet[], float bullet_pos[], SDL_Surface* sprite, SDL_Surface* screen)
+void draw_bullet(SDL_Rect bullet[], float bullet_pos[], SDL_Texture* texture_bullet, SDL_Renderer* renderer, SDL_Rect* bullet_sprite)
 {
 	for (int i = 0; i < Max_Bullets; i++)
 	{
@@ -128,7 +132,7 @@ void draw_bullet(SDL_Rect bullet[], float bullet_pos[], SDL_Surface* sprite, SDL
 		if (shot[i] && bullet[i].x == 770) { shot[i] = false; }
 		if (shot[i])
 		{
-			SDL_BlitSurface(sprite, NULL, screen, &bullet[i]);
+			SDL_RenderCopy(renderer, texture_bullet, bullet_sprite, &bullet[i]);
 		}
 	}
 }
@@ -163,7 +167,7 @@ void create_enemy(SDL_Rect* enemy, bool* free_enemy, float* enemy_pos)
 	}
 }
 
-void draw_enemy(SDL_Rect* enemy, bool* free_enemy, float* enemy_pos, SDL_Surface* sprite, SDL_Surface* screen)
+void draw_enemy(SDL_Rect* enemy, bool* free_enemy, float* enemy_pos, SDL_Texture* texture_enemy, SDL_Renderer* renderer)
 {
 	for (int i = 0; i < Max_Enemies; i++)
 	{
@@ -171,7 +175,7 @@ void draw_enemy(SDL_Rect* enemy, bool* free_enemy, float* enemy_pos, SDL_Surface
 		{
 			enemy_pos[i] -= Enemy_Speed;
 			enemy[i].x = enemy_pos[i];
-			SDL_BlitSurface(sprite, NULL, screen, &enemy[i]);
+			SDL_RenderCopy(renderer, texture_enemy, NULL, &enemy[i]);
 		}
 	}
 }
@@ -213,11 +217,11 @@ void bullet_hit(SDL_Rect* enemy, bool* free_enemy, SDL_Rect bullet[])
 	}
 }
 
-void draw_lives(SDL_Rect* heart, SDL_Surface* sprite, SDL_Surface* screen)
+void draw_lives(SDL_Rect* heart, SDL_Texture* texture_lives, SDL_Renderer* renderer)
 {
 	for (int i = 0; i < lives; i++)
 	{
-		SDL_BlitSurface(sprite, NULL, screen, &heart[i]);
+		SDL_RenderCopy(renderer, texture_lives, NULL, &heart[i]);
 	}
 }
 
@@ -258,19 +262,19 @@ void char_to_score(char* score, char points[])
 	}
 }
 
-bool detect_lose(SDL_Surface* gameover, SDL_Surface* screen, SDL_Rect* dead_screen)
+bool detect_lose(SDL_Texture* texture_gameover, SDL_Renderer* renderer, SDL_Rect* dead_screen)
 {
 	bool result = false;
 	if (lives == 0)
 	{
-		SDL_BlitSurface(gameover, NULL, screen, dead_screen);
+		SDL_RenderCopy(renderer, texture_gameover, NULL, dead_screen);
 		result = true;
 	}
 
 	return result;
 }
 
-void scrolling_background(SDL_Surface* background, SDL_Rect bckg[], SDL_Surface* screen, float* background_pos)
+void scrolling_background(SDL_Rect bckg[], float* background_pos, SDL_Texture* texture_background, SDL_Renderer* renderer)
 {
 	for (int i = 0; i < 2; i++)
 	{
@@ -281,7 +285,7 @@ void scrolling_background(SDL_Surface* background, SDL_Rect bckg[], SDL_Surface*
 			background_pos[i] = 853;
 			bckg[i].x = 853;
  		}
-		SDL_BlitSurface(background, NULL, screen, &bckg[i]);
+		SDL_RenderCopy(renderer, texture_background, NULL, &bckg[i]);
 	}
 }
 
@@ -289,6 +293,7 @@ int main(int argc, char* argv[])
 {
 	srand(time(NULL));
 	SDL_Init(SDL_INIT_EVERYTHING);
+	IMG_Init(IMG_INIT_PNG);
 	//SDL_RENDERER_PRESENTVSYNC;
 
 	char c_point[7];
@@ -302,11 +307,18 @@ int main(int argc, char* argv[])
 	SDL_Surface* screen = SDL_GetWindowSurface(window);
 
 	SDL_Surface* background = SDL_LoadBMP("space.bmp");
-	SDL_Surface* ship = SDL_LoadBMP("spaceship.bmp");
+	SDL_Surface* ship = IMG_Load("spaceshipsprites.png");
 	SDL_Surface* missile = SDL_LoadBMP("bullet.bmp");
 	SDL_Surface* ship2 = SDL_LoadBMP("enemy.bmp");
 	SDL_Surface* lives = SDL_LoadBMP("heart.bmp");
 	SDL_Surface* gameover = SDL_LoadBMP("gameover.bmp");
+
+	SDL_Texture* texture_background = SDL_CreateTextureFromSurface(renderer, background);
+	SDL_Texture* texture_ship = SDL_CreateTextureFromSurface(renderer,ship );
+	SDL_Texture* texture_missile = SDL_CreateTextureFromSurface(renderer, missile);
+	SDL_Texture* texture_ship2 = SDL_CreateTextureFromSurface(renderer, ship2);
+	SDL_Texture* texture_lives = SDL_CreateTextureFromSurface(renderer, lives);
+	SDL_Texture* texture_gameover = SDL_CreateTextureFromSurface(renderer, gameover);
 
 	SDL_Rect bckg[2];
 	float background_pos[2];
@@ -319,20 +331,31 @@ int main(int argc, char* argv[])
 		background_pos[i] = bckg[i].x;
 	}
 
+	SDL_Rect character_sprite;
+	character_sprite.h = 43;
+	character_sprite.w = 45;
+	character_sprite.x = 308;
+	character_sprite.y = 37;
 	SDL_Rect character;
-	character.h = 50;
-	character.w = 50;
+	character.h = 37;
+	character.w = 37;
 	character.x = 0;
 	character.y = 215;
 	character_pos_y = character.y;
 	character_pos_x = character.x;
 
+	SDL_Rect bullet_sprite;
+	bullet_sprite.h = 5;
+	bullet_sprite.w = 11;
+	bullet_sprite.x = 204;
+	bullet_sprite.y = 3;
+
 	SDL_Rect bullet[Max_Bullets];
 	float bullet_pos[Max_Bullets];
 	for (int i = 0; i < Max_Bullets; i++)
 	{
-		bullet[i].h = 25;
-		bullet[i].w = 50;
+		bullet[i].h = 5;
+		bullet[i].w = 11;
 		bullet[i].x = 0;
 		bullet[i].y = 0;
 		bullet_pos[Max_Bullets];
@@ -371,36 +394,37 @@ int main(int argc, char* argv[])
 
 	while (running)
 	{
-		scrolling_background(background, &bckg[0], screen, &background_pos[0]);
+		scrolling_background(&bckg[0], &background_pos[0], texture_background, renderer);
 
-		timer(&spawn); //comment to delet enemies
+		//timer(&spawn); //comment to delete enemies
 
 		if (spawn)
 		{
 			create_enemy(&enemy[0], free_enemy, &enemy_pos[0]);
 		}
 
-		inputs(&running, &character, &bullet[0], &bullet_pos[0]);
+		inputs(&running, &character, &bullet[0], &bullet_pos[0], &character_sprite);
 		move_character(&character);
 		if (dead == false)
 		{
 			detect_end(&enemy[0], free_enemy);
 			bullet_hit(&enemy[0], free_enemy, &bullet[0]);
-			draw_bullet(&bullet[0], &bullet_pos[0], missile, screen);
-			draw_enemy(&enemy[0], free_enemy, &enemy_pos[0], ship2, screen);
-			SDL_BlitSurface(ship, NULL, screen, &character);
-			draw_lives(&heart[0], lives, screen);
+			draw_bullet(&bullet[0], &bullet_pos[0], texture_ship, renderer, &bullet_sprite);
+			draw_enemy(&enemy[0], free_enemy, &enemy_pos[0], texture_ship2, renderer);
+			SDL_RenderCopy(renderer, texture_ship, &character_sprite, &character);
+			draw_lives(&heart[0], texture_lives, renderer);
 
 			int_to_char(&c_point[0], points);
 			char_to_score(&score[0], c_point);
 			SDL_SetWindowTitle(window, score);
 		}
 
-		dead = detect_lose(gameover, screen, &dead_screen);
+		dead = detect_lose(texture_gameover, renderer, &dead_screen);
 
-		SDL_UpdateWindowSurface(window);
+		SDL_RenderPresent(renderer);
 	}
 
+	IMG_Quit();
 	SDL_Quit();
 	return 0;
 }
