@@ -1,0 +1,4 @@
+﻿  main.cpp
+SDL2main.lib(SDL_windows_main.obj) : error LNK2005: ya se definió _main en main.obj
+SDL2main.lib(SDL_windows_main.obj) : error LNK2019: símbolo externo _SDL_main sin resolver al que se hace referencia en la función _main_utf8
+D:\Adrià Ferrer\Desktop\Dancing Game (SDL)\Debug\Dancing Game (SDL).exe : fatal error LNK1120: 1 externos sin resolver

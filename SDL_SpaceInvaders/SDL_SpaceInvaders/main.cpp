@@ -396,7 +396,7 @@ int main(int argc, char* argv[])
 	{
 		scrolling_background(&bckg[0], &background_pos[0], texture_background, renderer);
 
-		//timer(&spawn); //comment to delete enemies
+		timer(&spawn); //comment to delete enemies
 
 		if (spawn)
 		{

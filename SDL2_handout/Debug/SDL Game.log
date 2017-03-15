@@ -1,0 +1,15 @@
+﻿  ModuleWindow.cpp
+d:\adrià ferrer\desktop\sdl2_handout\sdl\include\sdl_surface.h(70): warning C4099: 'SDL_Surface': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
+  d:\adrià ferrer\desktop\sdl2_handout\sdl\include\sdl_surface.h(69): note: vea la declaración de 'SDL_Surface'
+d:\adrià ferrer\desktop\sdl2_handout\sdl\include\sdl_video.h(89): warning C4099: 'SDL_Window': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
+  d:\adrià ferrer\desktop\sdl2_handout\modulewindow.h(6): note: vea la declaración de 'SDL_Window'
+d:\adrià ferrer\desktop\sdl2_handout\sdl\include\sdl_render.h(121): warning C4099: 'SDL_Renderer': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
+  d:\adrià ferrer\desktop\sdl2_handout\modulewindow.h(7): note: vea la declaración de 'SDL_Renderer'
+d:\adrià ferrer\desktop\sdl2_handout\sdl\include\sdl_render.h(122): warning C4099: 'SDL_Renderer': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
+  d:\adrià ferrer\desktop\sdl2_handout\sdl\include\sdl_render.h(121): note: vea la declaración de 'SDL_Renderer'
+d:\adrià ferrer\desktop\sdl2_handout\modulewindow.cpp(15): warning C4002: hay demasiados parámetros reales para la macro 'LOG'
+d:\adrià ferrer\desktop\sdl2_handout\modulewindow.cpp(21): warning C4002: hay demasiados parámetros reales para la macro 'LOG'
+  Application.cpp
+  Generando código...
+  SDL Game.vcxproj -> D:\Adrià Ferrer\Desktop\SDL2_handout\Debug\SDL2 Handout.exe
+  SDL Game.vcxproj -> D:\Adrià Ferrer\Desktop\SDL2_handout\Debug\SDL2 Handout.pdb (Full PDB)

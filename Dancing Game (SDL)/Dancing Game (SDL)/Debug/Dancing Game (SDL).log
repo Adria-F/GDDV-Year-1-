@@ -1,0 +1,4 @@
+﻿  main.cpp
+d:\adrià ferrer\desktop\dancing game (sdl)\dancing game (sdl)\main.cpp(330): warning C4244: 'argumento': conversión de 'time_t' a 'unsigned int'; posible pérdida de datos
+  Dancing Game (SDL).vcxproj -> D:\Adrià Ferrer\Desktop\Dancing Game (SDL)\Debug\Dancing Game (SDL).exe
+  Dancing Game (SDL).vcxproj -> D:\Adrià Ferrer\Desktop\Dancing Game (SDL)\Debug\Dancing Game (SDL).pdb (Partial PDB)
