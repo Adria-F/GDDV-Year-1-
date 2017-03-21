@@ -144,10 +144,12 @@
   <ItemGroup>
     <ClCompile Include="Clock.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Matricula.cpp" />
     <ClCompile Include="Pixel.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Clock.h" />
+    <ClInclude Include="Matricula.h" />
     <ClInclude Include="Pixel.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

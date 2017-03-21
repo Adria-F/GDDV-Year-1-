@@ -3,6 +3,7 @@ using namespace std;
 
 #include "Pixel.h"
 #include "Clock.h"
+#include "Matricula.h"
 
 int main()
 {
@@ -44,7 +45,7 @@ int main()
 
 	Matricula m3(m1), m4;
 
-	Char* s = m4.to_string();
+	char* s = m4.to_string();
 
 	cout << "m4 val: " << s << endl;
 

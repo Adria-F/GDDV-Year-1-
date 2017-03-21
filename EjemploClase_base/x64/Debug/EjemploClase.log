@@ -1,5 +1,5 @@
-﻿  Main.cpp
-  Clock.cpp
-  Generando código...
-  EjemploClase.vcxproj -> C:\Users\Adrià Ferrer\Desktop\Personal\EjemploClase_base\x64\Debug\EjemploClase.exe
-  EjemploClase.vcxproj -> C:\Users\Adrià Ferrer\Desktop\Personal\EjemploClase_base\x64\Debug\EjemploClase.pdb (Full PDB)
+﻿  Matricula.cpp
+c:\users\adriafc\desktop\personal\ejemploclase_base\matricula.cpp(11): warning C4244: '/=': conversion from 'double' to 'int', possible loss of data
+c:\users\adriafc\desktop\personal\ejemploclase_base\matricula.cpp(13): warning C4244: '-=': conversion from 'double' to 'int', possible loss of data
+  EjemploClase.vcxproj -> C:\Users\adriafc\Desktop\Personal\EjemploClase_base\x64\Debug\EjemploClase.exe
+  EjemploClase.vcxproj -> C:\Users\adriafc\Desktop\Personal\EjemploClase_base\x64\Debug\EjemploClase.pdb (Full PDB)
