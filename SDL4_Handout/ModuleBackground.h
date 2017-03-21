@@ -26,8 +26,8 @@ public:
 	Animation pink_girl;
 	Animation two_men;
 	Animation green_man;
-	Animation brown_man;
 	Animation blue_man;
+	Animation brown_man;
 	Animation purple_man;
 
 };

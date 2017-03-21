@@ -1,6 +1,13 @@
-﻿  ModuleBackground.cpp
-  Generating Code...
-  Skipping... (no relevant changes detected)
+﻿  ModuleWindow.cpp
+  ModuleTextures.cpp
+  ModuleRender.cpp
+  ModulePlayer.cpp
+  ModuleInput.cpp
+  ModuleBackground.cpp
+  Main.cpp
+  Globals.cpp
   Application.cpp
-  SDL Game.vcxproj -> C:\Users\adriafc\Desktop\SDL4_Handout\Debug\SDL4 Handout.exe
-  SDL Game.vcxproj -> C:\Users\adriafc\Desktop\SDL4_Handout\Debug\SDL4 Handout.pdb (Full PDB)
+  Generando código...
+  LINK : no se encontró C:\Users\Adrià Ferrer\Desktop\Personal\SDL4_Handout\Debug\SDL4 Handout.exe o no lo generó el último vínculo incremental; ejecutando vínculo completo
+  SDL Game.vcxproj -> C:\Users\Adrià Ferrer\Desktop\Personal\SDL4_Handout\Debug\SDL4 Handout.exe
+  SDL Game.vcxproj -> C:\Users\Adrià Ferrer\Desktop\Personal\SDL4_Handout\Debug\SDL4 Handout.pdb (Full PDB)
