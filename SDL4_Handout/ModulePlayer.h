@@ -23,8 +23,13 @@ public:
 	Animation idle;
 	Animation forward;
 	Animation backward;
+	Animation jumping;
 	iPoint position;
 
+private:
+
+	bool jump;
+	float jump_state;
 };
 
 #endif

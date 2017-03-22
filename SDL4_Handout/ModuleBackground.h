@@ -30,6 +30,11 @@ public:
 	Animation brown_man;
 	Animation purple_man;
 
+private:
+
+	bool boat_up;
+	int boat_delay;
+	int float_variation;
 };
 
 #endif
