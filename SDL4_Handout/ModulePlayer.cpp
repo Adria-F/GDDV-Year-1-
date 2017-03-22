@@ -36,6 +36,16 @@ ModulePlayer::ModulePlayer()
 	backward.PushBack({ 881, 128, 60, 91 });
 	backward.PushBack({ 971, 129, 60, 89 });
 	backward.speed = 0.1f;
+
+	// Ryu Jump
+	jumping.PushBack({ 17, 798, 54, 134});
+	jumping.PushBack({ 100, 798, 55, 134});
+	jumping.PushBack({ 176, 798, 49, 134});
+	jumping.PushBack({ 251, 798, 53, 134 });
+	jumping.PushBack({ 327, 798, 47, 134 });
+	jumping.PushBack({ 397, 798, 47, 134 });
+	jumping.PushBack({ 464, 798, 55, 134 });
+	jumping.speed = 0.2f;
 }
 
 ModulePlayer::~ModulePlayer()
@@ -46,6 +56,8 @@ bool ModulePlayer::Start()
 {
 	LOG("Loading player textures");
 	bool ret = true;
+	jump = false;
+	jump_state = 0;
 	graphics = App->textures->Load("ryu.png"); // arcade version
 	return ret;
 }
@@ -57,16 +69,41 @@ update_status ModulePlayer::Update()
 
 	int speed = 1;
 
-	if(App->input->keyboard[SDL_SCANCODE_D] == 1)
+	if (jump == false)
 	{
-		current_animation = &forward;
-		position.x += speed;
-	}
+		if (App->input->keyboard[SDL_SCANCODE_D] == 1)
+		{
+			current_animation = &forward;
+			position.x += speed;
+		}
 
-	if (App->input->keyboard[SDL_SCANCODE_A] == 1)
+		if (App->input->keyboard[SDL_SCANCODE_A] == 1)
+		{
+			current_animation = &backward;
+			position.x -= speed;
+		}
+		if (App->input->keyboard[SDL_SCANCODE_SPACE] == 1)
+		{
+			jump = true;
+		}
+	}
+ 	if (jump)
 	{
-		current_animation = &backward;
-		position.x -= speed;
+		current_animation = &jumping;
+		if (jump_state <= 3)
+		{
+			position.y -= speed;
+		}
+		else if (jump_state > 3 && jump_state <= 5.9)
+		{
+			position.y += speed;
+		}
+		jump_state += jumping.speed;
+		if ((int)jump_state >= 7)
+		{
+			jump = false;
+			jump_state = 0;
+		}
 	}
 
 	// Draw everything --------------------------------------
