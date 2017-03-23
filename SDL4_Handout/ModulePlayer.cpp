@@ -92,11 +92,11 @@ update_status ModulePlayer::Update()
 		current_animation = &jumping;
 		if (jump_state <= 3)
 		{
-			position.y -= speed;
+			position.y -= 4;
 		}
 		else if (jump_state > 3 && jump_state <= 5.9)
 		{
-			position.y += speed;
+			position.y += 4;
 		}
 		jump_state += jumping.speed;
 		if ((int)jump_state >= 7)
