@@ -1,3 +1,18 @@
-﻿  ModuleAudio.cpp
-  SDL Game.vcxproj -> C:\Users\adriafc\Desktop\SDL6_Handout\Debug\SDL6 Handout.exe
-  SDL Game.vcxproj -> C:\Users\adriafc\Desktop\SDL6_Handout\Debug\SDL6 Handout.pdb (Full PDB)
+﻿  ModuleDebugMode.cpp
+  Generando código...
+c:\users\adrià ferrer\desktop\personal\sdl6_handout\moduledebugmode.cpp(16): error C4716: 'ModuleDebugMode::Init': debe devolver un valor
+c:\users\adrià ferrer\desktop\personal\sdl6_handout\moduledebugmode.cpp(26): error C4716: 'ModuleDebugMode::Update': debe devolver un valor
+c:\users\adrià ferrer\desktop\personal\sdl6_handout\moduledebugmode.cpp(21): error C4716: 'ModuleDebugMode::CleanUp': debe devolver un valor
+  Compilando...
+  ModuleWindow.cpp
+  ModuleTextures.cpp
+  ModuleSceneSpace.cpp
+  ModuleSceneIntro.cpp
+  ModuleRender.cpp
+  ModulePlayer.cpp
+  ModuleParticles.cpp
+  ModuleInput.cpp
+  ModuleFadeToBlack.cpp
+  ModuleAudio.cpp
+  Application.cpp
+  Generando código...

@@ -3,13 +3,12 @@
 #include "ModuleRender.h"
 #include "ModuleWindow.h"
 #include "ModuleInput.h"
+#include "ModuleSceneMine.h"
+#include "ModuleSceneCastle.h"
 #include "SDL/include/SDL.h"
 
 ModuleRender::ModuleRender() : Module()
 {
-	camera.x = camera.y = 0;
-	camera.w = SCREEN_WIDTH;
-	camera.h = SCREEN_HEIGHT;
 }
 
 // Destructor
@@ -49,19 +48,30 @@ update_status ModuleRender::PreUpdate()
 
 update_status ModuleRender::Update()	
 {
-	int speed = 3;
+	int speed = 2;
 
-	if(App->input->keyboard[SDL_SCANCODE_UP] == 1)
-		camera.y += speed;
-
-	if(App->input->keyboard[SDL_SCANCODE_DOWN] == 1)
-		camera.y -= speed;
-
-	if(App->input->keyboard[SDL_SCANCODE_LEFT] == 1)
-		camera.x += speed;
-
-	if(App->input->keyboard[SDL_SCANCODE_RIGHT] == 1)
-		camera.x -= speed;
+	if (App->input->keyboard[SDL_SCANCODE_UP])
+	{
+		if (App->scene_mine->background_y < 0 && App->scene_mine->IsEnabled())
+		{
+			App->scene_mine->background_y += speed;
+		}
+		if (App->scene_castle->background_y < 0 && App->scene_castle->IsEnabled())
+		{
+			App->scene_castle->background_y += speed;
+		}
+	}
+	if (App->input->keyboard[SDL_SCANCODE_DOWN])
+	{
+		if (App->scene_mine->background_y > -2895 && App->scene_mine->IsEnabled())
+		{
+			App->scene_mine->background_y -= speed;
+		}
+		if (App->scene_castle->background_y > -2895 && App->scene_castle->IsEnabled())
+		{
+			App->scene_castle->background_y -= speed;
+		}
+	}
 
 	return update_status::UPDATE_CONTINUE;
 }
@@ -91,8 +101,8 @@ bool ModuleRender::Blit(SDL_Texture* texture, int x, int y, SDL_Rect* section, f
 {
 	bool ret = true;
 	SDL_Rect rect;
-	rect.x = (int)(camera.x * speed) + x * SCREEN_SIZE;
-	rect.y = (int)(camera.y * speed) + y * SCREEN_SIZE;
+	rect.x = x * SCREEN_SIZE;
+	rect.y = y * SCREEN_SIZE;
 
 	if(section != NULL)
 	{

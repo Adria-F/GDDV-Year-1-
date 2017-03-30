@@ -26,6 +26,6 @@ public:
 
 private:
 	Mix_Music* music = nullptr;
-	Mix_Music* effect = nullptr;
+	Mix_Chunk* effect = nullptr;
 };
 #endif

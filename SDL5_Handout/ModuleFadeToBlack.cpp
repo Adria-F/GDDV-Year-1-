@@ -3,8 +3,8 @@
 #include "Application.h"
 #include "ModuleFadeToBlack.h"
 #include "ModuleRender.h"
-#include "ModuleSceneHonda.h"
-#include "ModuleSceneKen.h"
+#include "ModuleSceneMine.h"
+#include "ModuleSceneCastle.h"
 #include "SDL/include/SDL_render.h"
 #include "SDL/include/SDL_timer.h"
 

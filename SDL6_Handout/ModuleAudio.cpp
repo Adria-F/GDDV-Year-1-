@@ -9,7 +9,6 @@ ModuleAudio::ModuleAudio()
 {
 }
 
-
 ModuleAudio::~ModuleAudio()
 {
 }
@@ -18,6 +17,7 @@ bool ModuleAudio::Init()
 {
 	Mix_Init(MIX_INIT_OGG);
 	Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048);
+	Mix_Volume(-1, 40);
 
 	return true;
 }
@@ -29,20 +29,22 @@ void ModuleAudio::Play(sound_type type)
 	case sound_type::MUSIC:
 	{
 		Mix_PlayMusic(music, -1);
+		break;
 	}
 	case sound_type::EFFECT:
 	{
-		Mix_PlayMusic(effect, 1);
+		Mix_PlayChannel(-1, effect, 0);
+		break;
 	}
 	}
 }
 
-
 void ModuleAudio::Stop()
 {
+	Mix_HaltChannel(-1);
 	Mix_FreeMusic(music);
+	Mix_FreeChunk(effect);
 	music = nullptr;
-	Mix_HaltMusic();
 }
 
 bool ModuleAudio::Load(const char* path, sound_type type)
@@ -52,10 +54,12 @@ bool ModuleAudio::Load(const char* path, sound_type type)
 	case sound_type::MUSIC:
 	{
 		music = Mix_LoadMUS(path);
+		break;
 	}
 	case sound_type::EFFECT:
 	{
-		effect = Mix_LoadMUS(path);
+		effect = Mix_LoadWAV(path);
+		break;
 	}
 	}
 
