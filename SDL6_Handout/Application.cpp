@@ -9,6 +9,7 @@
 #include "ModuleParticles.h"
 #include "ModuleSceneIntro.h"
 #include "ModuleAudio.h"
+#include "ModuleDebugMode.h"
 
 Application::Application()
 {
@@ -22,6 +23,7 @@ Application::Application()
 	modules[7] = particles = new ModuleParticles();
 	modules[8] = fade = new ModuleFadeToBlack();
 	modules[9] = audio = new ModuleAudio();
+	modules[10] = debug = new ModuleDebugMode();
 }	
 
 Application::~Application()
@@ -37,6 +39,7 @@ bool Application::Init()
 	// Disable all stopped modules here
 	player->Disable();
 	scene_space->Disable();
+	debug->Disable();
 	// ---
 
 	for(int i = 0; i < NUM_MODULES && ret == true; ++i)

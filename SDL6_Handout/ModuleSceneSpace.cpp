@@ -47,6 +47,7 @@ update_status ModuleSceneSpace::Update()
 	int scroll_speed = 1;
 
 	App->player->position.x += 1;
+	
 	App->render->camera.x -= 3;
 	
 

@@ -1,6 +1,7 @@
 #include "Globals.h"
 #include "Application.h"
 #include "ModuleInput.h"
+#include "ModuleDebugMode.h"
 #include "SDL/include/SDL.h"
 
 ModuleInput::ModuleInput() : Module()
@@ -52,6 +53,15 @@ update_status ModuleInput::PreUpdate()
 				keyboard[i] = KEY_UP;
 			else
 				keyboard[i] = KEY_IDLE;
+		}
+	}
+
+	if (keyboard[SDL_SCANCODE_TAB] == KEY_STATE::KEY_DOWN)
+	{
+		App->debug->Enable();
+		if (App->debug->debugging == false)
+		{
+			App->debug->Disable();
 		}
 	}
 

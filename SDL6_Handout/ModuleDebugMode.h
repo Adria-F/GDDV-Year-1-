@@ -10,9 +10,18 @@ public:
 	ModuleDebugMode();
 	~ModuleDebugMode();
 
-	bool Init();
+	bool Start();
 	update_status Update();
 	bool CleanUp();
+
+public:
+
+	bool debugging = false;
+
+private:
+
+	bool choice = false;
+	char choiceC;
 };
 
 #endif // __MODULEDEBUGMODE_H__
