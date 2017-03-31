@@ -52,17 +52,17 @@ ModuleBackground::ModuleBackground()
 	green_man.PushBack({});
 	green_man.speed = 0.05f;
 
-	// brown_man animation
-	brown_man.PushBack({});
-	brown_man.PushBack({});
-	brown_man.PushBack({});
-	brown_man.speed = 0.05f;
-
 	// blue_man animation
 	blue_man.PushBack({});
 	blue_man.PushBack({});
 	blue_man.PushBack({});
 	blue_man.speed = 0.05f;
+
+	// brown_man animation
+	brown_man.PushBack({});
+	brown_man.PushBack({});
+	brown_man.PushBack({});
+	brown_man.speed = 0.05f;
 
 	// purple_man animation
 	purple_man.PushBack({});
@@ -79,6 +79,9 @@ bool ModuleBackground::Start()
 {
 	LOG("Loading background assets");
 	bool ret = true;
+	boat_up = false;
+	boat_delay = 0;
+	float_variation = 1;
 	graphics = App->textures->Load("ken_stage.png");
 	return ret;
 }
@@ -91,17 +94,48 @@ update_status ModuleBackground::Update()
 	App->render->Blit(graphics, 560, 8, &(flag.GetCurrentFrame()), 0.75f); // flag animation
 
 	// TODO 2: Draw the ship from the sprite sheet with some parallax effect
-	App->render->Blit(graphics, 0, 0, &ship, 0.9f);
+	App->render->Blit(graphics, 0, float_variation - 4, &ship, 0.9f);
 
 	// TODO 3: Animate the girl on the ship (see the sprite sheet)
-	App->render->Blit(graphics, 192, 104, &(pink_girl.GetCurrentFrame()), 0.9f);
+	App->render->Blit(graphics, 192, float_variation + 100, &(pink_girl.GetCurrentFrame()), 0.9f);
 	App->render->Blit(graphics, 128, 96, &(two_men.GetCurrentFrame()), 0.9f);
-	App->render->Blit(graphics, 192, 104, &(green_man.GetCurrentFrame()), 0.9f);
-	App->render->Blit(graphics, 192, 104, &(brown_man.GetCurrentFrame()), 0.9f);
-	App->render->Blit(graphics, 192, 104, &(blue_man.GetCurrentFrame()), 0.9f);
-	App->render->Blit(graphics, 192, 104, &(purple_man.GetCurrentFrame()), 0.9f);
+	App->render->Blit(graphics, 224, 104, &(green_man.GetCurrentFrame()), 0.9f);
+	App->render->Blit(graphics, 228, 96, &(blue_man.GetCurrentFrame()), 0.9f);
+	App->render->Blit(graphics, 88, 24, &(brown_man.GetCurrentFrame()), 0.9f);
+	App->render->Blit(graphics, 127, 24, &(purple_man.GetCurrentFrame()), 0.9f);
 	
 	App->render->Blit(graphics, 0, 170, &ground);
+
+	if (boat_delay == 0)
+	{
+		if (boat_up == false)
+		{
+			if (float_variation < 3)
+			{
+				float_variation++;
+			}
+			else
+			{
+				boat_up = true;
+			}
+		}
+		else
+		{
+			if (float_variation >= 0)
+			{
+				float_variation--;
+			}
+			else
+			{
+				boat_up = false;
+			}
+		}
+		boat_delay = 20;
+	}
+	else
+	{
+		boat_delay--;
+	}
 
 	return UPDATE_CONTINUE;
 }

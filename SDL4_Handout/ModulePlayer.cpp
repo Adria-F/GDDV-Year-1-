@@ -38,9 +38,15 @@ ModulePlayer::ModulePlayer()
 	backward.speed = 0.1f;
 
 	// Ryu Jump
+<<<<<<< HEAD
 	jumping.PushBack({ 17, 798, 54, 134});
 	jumping.PushBack({ 100, 798, 55, 134});
 	jumping.PushBack({ 176, 798, 49, 134});
+=======
+	jumping.PushBack({ 17, 798, 54, 134 });
+	jumping.PushBack({ 100, 798, 55, 134 });
+	jumping.PushBack({ 176, 798, 49, 134 });
+>>>>>>> origin/master
 	jumping.PushBack({ 251, 798, 53, 134 });
 	jumping.PushBack({ 327, 798, 47, 134 });
 	jumping.PushBack({ 397, 798, 47, 134 });
@@ -87,16 +93,28 @@ update_status ModulePlayer::Update()
 			jump = true;
 		}
 	}
+<<<<<<< HEAD
  	if (jump)
+=======
+	if (jump)
+>>>>>>> origin/master
 	{
 		current_animation = &jumping;
 		if (jump_state <= 3)
 		{
+<<<<<<< HEAD
 			position.y -= speed;
 		}
 		else if (jump_state > 3 && jump_state <= 5.9)
 		{
 			position.y += speed;
+=======
+			position.y -= 4;
+		}
+		else if (jump_state > 3 && jump_state <= 5.9)
+		{
+			position.y += 4;
+>>>>>>> origin/master
 		}
 		jump_state += jumping.speed;
 		if ((int)jump_state >= 7)

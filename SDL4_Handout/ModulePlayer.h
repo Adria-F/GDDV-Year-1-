@@ -25,9 +25,15 @@ public:
 	Animation backward;
 	Animation jumping;
 	iPoint position;
+<<<<<<< HEAD
 	
 private:
 	
+=======
+
+private:
+
+>>>>>>> origin/master
 	bool jump;
 	float jump_state;
 };
