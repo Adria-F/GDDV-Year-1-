@@ -54,8 +54,9 @@ update_status ModuleSceneSpace::Update()
 {
 	// Move camera forward -----------------------------
 	int scroll_speed = 1;
-
-	App->player->position.x += 1;
+	if (App->player->IsEnabled())
+		App->player->position.x += 1;
+	
 	App->render->camera.x -= 3;
 	
 
