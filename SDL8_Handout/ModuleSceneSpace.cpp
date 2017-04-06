@@ -52,7 +52,7 @@ bool ModuleSceneSpace::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::BROWNCOOKIE, 845, 100);
 	App->enemies->AddEnemy(ENEMY_TYPES::BROWNCOOKIE, 860, 100);
 
-	App->enemies->AddEnemy()
+	App->enemies->AddEnemy(ENEMY_TYPES::MECH, 1150, 192);
 	
 	return true;
 }

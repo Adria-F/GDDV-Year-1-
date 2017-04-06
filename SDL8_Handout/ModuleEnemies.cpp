@@ -132,6 +132,9 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 			case ENEMY_TYPES::BROWNCOOKIE:
 				enemies[i] = new Enemy_BrownCookie(info.x, info.y);
 				break;
+			case ENEMY_TYPES::MECH:
+				enemies[i] = new Enemy_Mech(info.x, info.y);
+				break;
 		}
 	}
 }

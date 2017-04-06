@@ -4,6 +4,7 @@
 #include "Module.h"
 #include "Enemy_RedBird.h"
 #include "Enemy_BrownCookie.h"
+#include "Enemy_Mech.h"
 
 #define MAX_ENEMIES 100
 
@@ -17,7 +18,8 @@ enum ENEMY_TYPES
 {
 	NO_TYPE,
 	REDBIRD,
-	BROWNCOOKIE
+	BROWNCOOKIE,
+	MECH
 };
 
 class Enemy;
