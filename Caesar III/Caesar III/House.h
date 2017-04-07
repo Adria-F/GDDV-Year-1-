@@ -15,7 +15,7 @@ public:
 	{
 	}
 
-	void printHouse()
+	void printInfo() const
 	{
 		cout << "-- " << name << " --" << endl;
 		cout << "Num. floors: " << floors << endl;

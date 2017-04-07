@@ -21,6 +21,9 @@ public:
 	{
 		return name;
 	}
+
+	virtual void printInfo() const = 0;
+
 };
 
 #endif // !__BUILDING__

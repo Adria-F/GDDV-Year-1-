@@ -17,7 +17,7 @@ public:
 		sprintf_s(god, pgod);
 	}
 
-	void printTemple()
+	void printInfo() const
 	{
 		cout << "-- " << name << " --" << endl;
 		cout << "God: " << god << endl;

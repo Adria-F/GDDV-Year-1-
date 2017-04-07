@@ -5,15 +5,17 @@
 
 int main()
 {
-	Warehouse w("East Warehouse", 10, 20, 30);
-	House h("Agripa's house", 2, 5, 10);
-	Temple t("Mercury's Temple", "Mercury", 3);
+	Building* building[3];
+	building[0] = new Warehouse ("East Warehouse", 10, 20, 30);
+	building[1] = new House ("Agripa's house", 2, 5, 10);
+	building[2] = new Temple ("Mercury's Temple", "Mercury", 3);
 
-	std::cout << "Warehouse name: " << w.getName() << std::endl << std::endl;
+	std::cout << "Warehouse name: " << building[0]->getName() << std::endl << std::endl;
 
-	w.printResources();
-	h.printHouse();
-	t.printTemple();
+	for (int i = 0; i < 3; i++)
+	{
+		building[i]->printInfo();
+	}
 
 	system("pause");
 	return 0;

@@ -15,7 +15,7 @@ public:
 	{
 	}
 
-	void printResources() const
+	void printInfo() const
 	{
 		cout << "-- " << name << " --" << endl;
 		cout << "Wood: " << wood << endl;
