@@ -16,11 +16,7 @@ public:
 	{
 		bool result = false;
 
-		result = (abs(row - newRow) == 2 && abs(column - newColumn) == 1);
-		if (result == false)
-		{
-			result = (abs(column - newColumn) == 2 && abs(row - newRow) == 1);
-		}
+		result = (abs(row - newRow) == 2 && abs(column - newColumn) == 1) || (abs(column - newColumn) == 2 && abs(row - newRow) == 1);
 
 		return result;
 	}
