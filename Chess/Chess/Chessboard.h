@@ -24,17 +24,17 @@ public:
 		bool color = true;
 		for (int k = 0; k < 2; k++)
 		{
-			piece[i++] = new Rook(color);
-			piece[i++] = new Knight(color);
-			piece[i++] = new Bishop(color);
-			piece[i++] = new Queen(color);
-			piece[i++] = new King(color);
-			piece[i++] = new Bishop(color);
-			piece[i++] = new Knight(color);
-			piece[i++] = new Rook(color);
+			piece[i++] = new Rook(color); //Torre
+			piece[i++] = new Knight(color); //Cavall
+			piece[i++] = new Bishop(color); //Alfil
+			piece[i++] = new Queen(color); //Reina
+			piece[i++] = new King(color);  //Rei
+			piece[i++] = new Bishop(color); //Alfil
+			piece[i++] = new Knight(color); //Cavall
+			piece[i++] = new Rook(color); //Torre
 			for (int j = 0; j < 8; j++)
 			{
-				piece[i++] = new Pawn(color);
+				piece[i++] = new Pawn(color); //Peons
 			}
 			color = false;
 		}
@@ -51,14 +51,14 @@ public:
 	void start()
 	{
 		int i = 0;
-		for (int k = 1; k < 3; k++)
+		for (int k = 8; k > 6; k--)
 		{
 			for (int j = 0; j < 8; j++)
 			{
 				piece[i++]->setPosition(k, 'a' + j);
 			}
 		}
-		for (int k = 8; k > 6; k--)
+		for (int k = 1; k < 3; k++)
 		{
 			for (int j = 0; j < 8; j++)
 			{
@@ -78,32 +78,29 @@ public:
 			}
 		}
 		int a = 0;
-		int mayus = 32;
 		for (int k = 0; k < 2; k++)
 		{
-			board[piece[a]->getRow() - 1][piece[a]->getColumn() - 97] = 'R' + mayus;
+			board[piece[a]->getRow() - 1][piece[a]->getColumn() - 97] = (piece[a]->getTeam()) ? 'R' : 'r';
 			a++;
-			board[piece[a]->getRow() - 1][piece[a]->getColumn() - 97] = 'N' + mayus;
+			board[piece[a]->getRow() - 1][piece[a]->getColumn() - 97] = (piece[a]->getTeam()) ? 'N' : 'n';
 			a++;
-			board[piece[a]->getRow() - 1][piece[a]->getColumn() - 97] = 'B' + mayus;
+			board[piece[a]->getRow() - 1][piece[a]->getColumn() - 97] = (piece[a]->getTeam()) ? 'B' : 'b';
 			a++;
-			board[piece[a]->getRow() - 1][piece[a]->getColumn() - 97] = 'Q' + mayus;
+			board[piece[a]->getRow() - 1][piece[a]->getColumn() - 97] = (piece[a]->getTeam()) ? 'Q' : 'q';
 			a++;
-			board[piece[a]->getRow() - 1][piece[a]->getColumn() - 97] = 'K' + mayus;
+			board[piece[a]->getRow() - 1][piece[a]->getColumn() - 97] = (piece[a]->getTeam()) ? 'K' : 'k';
 			a++;
-			board[piece[a]->getRow() - 1][piece[a]->getColumn() - 97] = 'B' + mayus;
+			board[piece[a]->getRow() - 1][piece[a]->getColumn() - 97] = (piece[a]->getTeam()) ? 'B' : 'b';
 			a++;
-			board[piece[a]->getRow() - 1][piece[a]->getColumn() - 97] = 'N' + mayus;
+			board[piece[a]->getRow() - 1][piece[a]->getColumn() - 97] = (piece[a]->getTeam()) ? 'N' : 'n';
 			a++;
-			board[piece[a]->getRow() - 1][piece[a]->getColumn() - 97] = 'R' + mayus;
+			board[piece[a]->getRow() - 1][piece[a]->getColumn() - 97] = (piece[a]->getTeam()) ? 'R' : 'r';
 			a++;
 			for (int j = 0; j < 8; j++)
 			{
-				board[piece[a]->getRow() - 1][piece[a]->getColumn() - 97] = 'P' + mayus;
+				board[piece[a]->getRow() - 1][piece[a]->getColumn() - 97] = (piece[a]->getTeam()) ? 'P' : 'p';
 				a++;
 			}
-			a--;
-			mayus = 0;
 		}
 
 		for (int i = 0; i < 8; i++)
@@ -117,6 +114,22 @@ public:
 
 	}
 
+	bool movePiece(int currentRow, char currentColumn, bool white, int newRow, char newColumn)
+	{
+		bool result = false;
+
+		for (int i = 0; i < 32; i++)
+		{
+			if (piece[i]->getRow() == currentRow && piece[i]->getColumn() == currentColumn && piece[i]->getTeam() == white && piece[i]->checkMovement(newRow, newColumn))
+			{
+				piece[i]->setPosition(newRow, newColumn);
+				result = true;
+				break;
+			}
+		}
+
+		return result;
+	}
 };
 
 #endif // !__CHESSBOARD_H__

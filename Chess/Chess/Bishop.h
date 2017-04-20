@@ -16,7 +16,7 @@ public:
 	{
 		bool result = false;
 
-		result = (newColumn == (column + abs(row - newRow)));
+		result = (newColumn == (column + ((isWhite) ? (newRow - row) : (row - newRow))));
 
 		return result;
 	}

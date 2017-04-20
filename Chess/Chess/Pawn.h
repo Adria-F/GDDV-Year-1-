@@ -17,11 +17,11 @@ public:
 
 		if (isWhite)
 		{
-			result = (newRow == (row + 1));
+			result = (newRow == (row - 1));
 		}
 		else
 		{
-			result = (newRow == (row - 1));
+			result = (newRow == (row + 1));
 		}
 
 		return result;
