@@ -1,7 +1,3 @@
-﻿  Queue.cpp
-main.obj : error LNK2019: unresolved external symbol "public: __thiscall Queue<int>::Queue<int>(int)" (??0?$Queue@H@@QAE@H@Z) referenced in function _main
-main.obj : error LNK2019: unresolved external symbol "public: __thiscall Queue<int>::~Queue<int>(void)" (??1?$Queue@H@@QAE@XZ) referenced in function _main
-main.obj : error LNK2019: unresolved external symbol "public: void __thiscall Queue<int>::enqueue(int const &)" (?enqueue@?$Queue@H@@QAEXABH@Z) referenced in function _main
-main.obj : error LNK2019: unresolved external symbol "public: int __thiscall Queue<int>::dequeue(void)" (?dequeue@?$Queue@H@@QAEHXZ) referenced in function _main
-main.obj : error LNK2019: unresolved external symbol "public: void __thiscall Queue<int>::print(void)const " (?print@?$Queue@H@@QBEXXZ) referenced in function _main
-C:\Users\rma\Desktop\Queue\Debug\Queue.exe : fatal error LNK1120: 5 unresolved externals
+﻿  main.cpp
+  Queue.vcxproj -> C:\Users\adriafc\Desktop\Personal\Queue\Debug\Queue.exe
+  Queue.vcxproj -> C:\Users\adriafc\Desktop\Personal\Queue\Debug\Queue.pdb (Partial PDB)

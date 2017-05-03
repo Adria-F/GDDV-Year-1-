@@ -1,14 +1,3 @@
 ﻿  main.cpp
-main.obj : error LNK2019: unresolved external symbol "public: __thiscall Stack<int>::Stack<int>(int)" (??0?$Stack@H@@QAE@H@Z) referenced in function _main
-main.obj : error LNK2019: unresolved external symbol "public: __thiscall Stack<int>::~Stack<int>(void)" (??1?$Stack@H@@QAE@XZ) referenced in function _main
-main.obj : error LNK2019: unresolved external symbol "public: void __thiscall Stack<int>::push(int const &)" (?push@?$Stack@H@@QAEXABH@Z) referenced in function _main
-main.obj : error LNK2019: unresolved external symbol "public: void __thiscall Stack<int>::pop(void)" (?pop@?$Stack@H@@QAEXXZ) referenced in function _main
-main.obj : error LNK2019: unresolved external symbol "public: int __thiscall Stack<int>::top(void)const " (?top@?$Stack@H@@QBEHXZ) referenced in function _main
-main.obj : error LNK2019: unresolved external symbol "public: bool __thiscall Stack<int>::empty(void)const " (?empty@?$Stack@H@@QBE_NXZ) referenced in function _main
-main.obj : error LNK2019: unresolved external symbol "public: int __thiscall Stack<int>::size(void)const " (?size@?$Stack@H@@QBEHXZ) referenced in function _main
-main.obj : error LNK2019: unresolved external symbol "public: void __thiscall Stack<int>::print(void)const " (?print@?$Stack@H@@QBEXXZ) referenced in function _main
-main.obj : error LNK2019: unresolved external symbol "public: __thiscall Stack<char>::Stack<char>(int)" (??0?$Stack@D@@QAE@H@Z) referenced in function _main
-main.obj : error LNK2019: unresolved external symbol "public: __thiscall Stack<char>::~Stack<char>(void)" (??1?$Stack@D@@QAE@XZ) referenced in function _main
-main.obj : error LNK2019: unresolved external symbol "public: __thiscall Stack<bool>::Stack<bool>(int)" (??0?$Stack@_N@@QAE@H@Z) referenced in function _main
-main.obj : error LNK2019: unresolved external symbol "public: __thiscall Stack<bool>::~Stack<bool>(void)" (??1?$Stack@_N@@QAE@XZ) referenced in function _main
-C:\Users\rma\Desktop\Stack\Debug\Stack.exe : fatal error LNK1120: 12 unresolved externals
+  Stack.vcxproj -> C:\Users\adriafc\Desktop\Personal\Stack\Debug\Stack.exe
+  Stack.vcxproj -> C:\Users\adriafc\Desktop\Personal\Stack\Debug\Stack.pdb (Partial PDB)
