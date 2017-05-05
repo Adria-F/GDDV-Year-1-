@@ -66,6 +66,11 @@ void List<T>::pushFront(const T& elem)
 	aux->next = first;
 	first = aux;
 
+	if (first->next)
+	{
+		first->next->prev = first;
+	}
+
 	if (numElems == 0) { last = aux; }
 	numElems++;
 }

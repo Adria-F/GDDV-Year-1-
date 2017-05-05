@@ -1,0 +1,22 @@
+﻿  main.cpp
+c:\users\adriafc\desktop\dynamic arrays\dynamic arrays\dynamicarrays.h(82): warning C4018: '<': signed/unsigned mismatch
+  c:\users\adriafc\desktop\dynamic arrays\dynamic arrays\dynamicarrays.h(76): note: while compiling class template member function 'bool DynArray<char>::insert(unsigned int,const Type &)'
+          with
+          [
+              Type=char
+          ]
+  c:\users\adriafc\desktop\dynamic arrays\dynamic arrays\main.cpp(7): note: see reference to function template instantiation 'bool DynArray<char>::insert(unsigned int,const Type &)' being compiled
+          with
+          [
+              Type=char
+          ]
+  c:\users\adriafc\desktop\dynamic arrays\dynamic arrays\main.cpp(5): note: see reference to class template instantiation 'DynArray<char>' being compiled
+c:\users\adriafc\desktop\dynamic arrays\dynamic arrays\dynamicarrays.h(92): warning C4018: '>': signed/unsigned mismatch
+c:\users\adriafc\desktop\dynamic arrays\dynamic arrays\dynamicarrays.h(111): warning C4018: '<': signed/unsigned mismatch
+  c:\users\adriafc\desktop\dynamic arrays\dynamic arrays\dynamicarrays.h(107): note: while compiling class template member function 'bool DynArray<char>::remove(unsigned int)'
+  c:\users\adriafc\desktop\dynamic arrays\dynamic arrays\main.cpp(15): note: see reference to function template instantiation 'bool DynArray<char>::remove(unsigned int)' being compiled
+c:\users\adriafc\desktop\dynamic arrays\dynamic arrays\dynamicarrays.h(145): warning C4018: '<': signed/unsigned mismatch
+  c:\users\adriafc\desktop\dynamic arrays\dynamic arrays\dynamicarrays.h(144): note: while compiling class template member function 'void DynArray<char>::print(void) const'
+  c:\users\adriafc\desktop\dynamic arrays\dynamic arrays\main.cpp(11): note: see reference to function template instantiation 'void DynArray<char>::print(void) const' being compiled
+  Dynamic Arrays.vcxproj -> C:\Users\adriafc\Desktop\Dynamic Arrays\Debug\Dynamic Arrays.exe
+  Dynamic Arrays.vcxproj -> C:\Users\adriafc\Desktop\Dynamic Arrays\Debug\Dynamic Arrays.pdb (Partial PDB)
