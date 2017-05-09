@@ -2,6 +2,7 @@
 #define __DYNAMICARRAYS_H__
 
 #include <iostream>
+#include <assert.h>
 using namespace std;
 #define MIN_ARRAY_BLOCK_SIZE 10
 
@@ -49,7 +50,7 @@ template<class Type>
 DynArray<Type>::DynArray(unsigned int memSize)
 {
 	allocMem(memSize);
-	memSize = memSize;
+	this->memSize = memSize;
 	numElems = 0;
 }
 
@@ -68,7 +69,7 @@ bool DynArray<Type>::empty() const
 template<class Type>
 unsigned int DynArray<Type>::size() const
 {
-	return memSize;
+	return numElems;
 }
 
 template<class Type>
@@ -121,6 +122,7 @@ bool DynArray<Type>::remove(unsigned int index)
 template<class Type>
 Type & DynArray<Type>::operator[](unsigned int index) const
 {
+	assert(index < numElems);
 	return arrayElems[index];
 }
 
